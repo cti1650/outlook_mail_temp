@@ -28,13 +28,39 @@
           }
         });
       }
+      function temp2(){
+        mailPop({
+          'subject':'テストメール',
+          'body':`
+          ご担当者さま
+          
+          いつもお世話になっております。{{担当者名}}です。
+          
+          {{値1}}の件で{{値2}}を送付致します。
+          
+          よろしくお願いいたします。
+          `,
+          'to':['test@gmail.com'],
+          'replace':{
+            '担当者名':'田中',
+            '値1':val1.value,
+            '値2':val2.value,
+          }
+        });
+      }
     </script>
   </head>
   <body class="bg-gray-100">
     <h2>Outlook Mail Temp</h2>
     <div>
-      <div><h3>テンプレート</h3></div>
+      <div><h3>テンプレート１</h3></div>
       <div><button onclick="temp();">メール</button></div>
+    </div>
+    <div>
+      <div><h3>テンプレート２</h3></div>
+      <div><label>値1/label><input id="val1" type="text" value="現場調査" /></div>
+      <div><label>値2/label><input id="val2" type="text" value="調査報告書" /></div>
+      <div><button onclick="temp2();">メール</button></div>
     </div>
   </body>
 </html>
