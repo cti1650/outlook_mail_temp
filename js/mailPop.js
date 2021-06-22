@@ -2,13 +2,16 @@ function mailPop(opt = {}) {
   let def_data = {
     subject: '',
     body: '',
-    to: [''],
+    to: '',
     replace: {},
     mode: 'gmail',
   };
   let data = { ...def_data, ...opt };
   if (Array.isArray(data.body)) {
     data.body = data.body.join('\n');
+  }
+  if (Array.isArray(data.to)) {
+    data.to = data.to.join(';');
   }
   if (data.replace) {
     Object.keys(data.replace).forEach((key) => {
@@ -25,7 +28,7 @@ function mailPop(opt = {}) {
           '&body=' +
           encodeURI(data.body) +
           '&to=' +
-          encodeURI(data.to.join(';'))
+          encodeURI(data.to)
       );
       break;
     default:
