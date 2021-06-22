@@ -40,6 +40,8 @@
           いつもお世話になっております。{{担当者名}}です。
           
           {{値1}}の件で{{値2}}を送付致します。
+
+          {{値3}}
           
           よろしくお願いいたします。
           `,
@@ -48,19 +50,28 @@
             担当者名: '田中',
             値1: val1.value,
             値2: val2.value,
+            値3: val3.value,
           },
         });
       }
     </script>
   </head>
-  <body class="bg-gray-200 p-4">
+  <body class="container max-w-xl bg-gray-200 p-4">
     <h1 class="text-xl">Mail Temp</h1>
     <div class="flex flex-col space-y-2">
       <div class="p-2 bg-white rounded-lg">
         <div class="text-lg">テンプレート１</div>
         <div>
           <button
-            class="border border-gray-200 bg-gray-400 w-40 px-4 py-1 rounded-lg"
+            class="
+              w-full
+              border border-gray-200
+              bg-gray-400
+              w-40
+              px-4
+              py-1
+              rounded-lg
+            "
             onclick="temp();"
           >
             メール
@@ -69,15 +80,55 @@
       </div>
       <div class="p-2 bg-white rounded-lg">
         <div class="text-lg">テンプレート２</div>
-        <div>
-          <label>値1</label><input id="val1" type="text" value="現場調査" />
-        </div>
-        <div>
-          <label>値2</label><input id="val2" type="text" value="調査報告書" />
+        <div class="flex flex-col py-2 space-y-2 w-full">
+          <div class="flex flex-row">
+            <div class="w-24">値1</div>
+            <div class="w-full border rounded-lg">
+              <input
+                class="w-full px-4"
+                id="val1"
+                placeholder="値1"
+                type="text"
+                value="現場調査"
+              />
+            </div>
+          </div>
+          <div class="flex flex-row">
+            <div class="w-24">値2</div>
+            <div class="w-full border rounded-lg">
+              <input
+                class="w-full px-4"
+                id="val2"
+                placeholder="値2"
+                type="text"
+                value="調査報告書"
+              />
+            </div>
+          </div>
+          <div class="flex flex-row">
+            <div class="w-24">値2</div>
+            <div class="w-full border rounded-lg">
+              <textarea
+                class="w-full px-4"
+                id="val3"
+                placeholder="値2"
+                type="text"
+                value="調査報告書"
+              ></textarea>
+            </div>
+          </div>
         </div>
         <div>
           <button
-            class="border border-gray-200 bg-gray-400 w-40 px-4 py-1 rounded-lg"
+            class="
+              w-full
+              border border-gray-200
+              bg-gray-400
+              w-40
+              px-4
+              py-1
+              rounded-lg
+            "
             onclick="temp2();"
           >
             メール
