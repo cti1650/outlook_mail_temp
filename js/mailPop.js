@@ -67,7 +67,7 @@ function mailPop(opt = {}) {
           '?subject=' +
           encodeURI(data.subject) +
           '&body=' +
-          encodeURI(data.body) +
+          encodeURI(data.body.replace(/\n/g, '%0d%0a')) +
           '&cc=' +
           encodeURI(data.cc) +
           '&bcc=' +
