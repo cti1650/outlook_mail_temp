@@ -6,7 +6,7 @@ function mailPop(opt = {}) {
     cc: '',
     bcc: '',
     replace: {},
-    mode: 'gmail',
+    mode: '',
   };
   let data = { ...def_data, ...opt };
   if (Array.isArray(data.body)) {
@@ -44,7 +44,9 @@ function mailPop(opt = {}) {
           encodeURI(data.to.join(';'))
       );
       break;
-    default:
+    case 'gm':
+    case 'gmail':
+    case 'google':
       window.open(
         'https://mail.google.com/mail/?view=cm&su=' +
           encodeURI(data.subject) +
@@ -52,6 +54,20 @@ function mailPop(opt = {}) {
           encodeURI(data.body) +
           '&to=' +
           encodeURI(data.to) +
+          '&cc=' +
+          encodeURI(data.cc) +
+          '&bcc=' +
+          encodeURI(data.bcc)
+      );
+      break;
+    default:
+      window.open(
+        'mailto:' +
+          encodeURI(data.to.replace(';', ',')) +
+          '?subject=' +
+          encodeURI(data.subject) +
+          '&body=' +
+          encodeURI(data.body) +
           '&cc=' +
           encodeURI(data.cc) +
           '&bcc=' +
