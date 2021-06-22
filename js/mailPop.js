@@ -38,7 +38,7 @@ function mailPop(opt = {}) {
           '&body=' +
           encodeURI(data.body) +
           '&to=' +
-          encodeURI(data.to.join(';'))
+          encodeURI(data.to)
       );
   }
 }
