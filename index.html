@@ -16,7 +16,10 @@
       src="https://cti1650.github.io/outlook_mail_temp/js/mailPop.js"
     ></script>
     <script type="text/javascript">
-      function temp() {
+      function temp0() {
+        mailPop({ mode: mode.value });
+      }
+      function temp1() {
         mailPop({
           subject: 'テストメール',
           body: [
@@ -32,6 +35,7 @@
           replace: {
             担当者名: '田中',
           },
+          mode: mode.value,
         });
       }
       function temp2() {
@@ -55,6 +59,7 @@
             値2: val2.value,
             値3: val3.value,
           },
+          mode: mode.value,
         });
       }
     </script>
@@ -66,7 +71,36 @@
   </head>
   <body class="container max-w-xl bg-gray-200 p-4">
     <h1 class="text-xl">Mail Temp</h1>
+    <div class="flex flex-row py-4">
+      <div class="w-24">メールソフト</div>
+      <div class="w-full border rounded-lg">
+        <select class="w-full px-4" id="mode">
+          <option value="" selected>デフォルト</option>
+          <option value="gmail">gmail</option>
+          <option value="outlook">outlook</option>
+        </select>
+      </div>
+    </div>
     <div class="flex flex-col space-y-2">
+      <div class="p-2 bg-white rounded-lg">
+        <div class="text-lg">空データ</div>
+        <div>
+          <button
+            class="
+              w-full
+              border border-gray-200
+              bg-gray-400
+              w-40
+              px-4
+              py-1
+              rounded-lg
+            "
+            onclick="temp0();"
+          >
+            メール
+          </button>
+        </div>
+      </div>
       <div class="p-2 bg-white rounded-lg">
         <div class="text-lg">テンプレート１</div>
         <div>
@@ -80,7 +114,7 @@
               py-1
               rounded-lg
             "
-            onclick="temp();"
+            onclick="temp1();"
           >
             メール
           </button>
