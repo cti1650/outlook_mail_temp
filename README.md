@@ -29,3 +29,9 @@
   }
 </script>
 ```
+
+- htmlファイルのbodyタグ内に以下を追記
+
+```
+<button onclick="temp()">テンプレート表示</button>
+```
