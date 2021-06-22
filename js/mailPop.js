@@ -3,6 +3,8 @@ function mailPop(opt = {}) {
     subject: '',
     body: '',
     to: '',
+    cc: '',
+    bcc: '',
     replace: {},
     mode: 'gmail',
   };
@@ -13,6 +15,12 @@ function mailPop(opt = {}) {
   if (Array.isArray(data.to)) {
     data.to = data.to.join(';');
   }
+  if (Array.isArray(data.cc)) {
+    data.cc = data.cc.join(';');
+  }
+  if (Array.isArray(data.bcc)) {
+    data.bcc = data.bcc.join(';');
+  }
   if (data.replace) {
     Object.keys(data.replace).forEach((key) => {
       data.subject = data.subject.replace('{{' + key + '}}', data.replace[key]);
@@ -22,13 +30,18 @@ function mailPop(opt = {}) {
   switch (data.mode) {
     case 'ms':
     case 'outlook':
+      data.to = [
+        ...data.to.split(';'),
+        ...data.cc.split(';'),
+        ...data.bcc.split(';'),
+      ];
       window.open(
         'https://outlook.office.com/mail/deeplink/compose?subject=' +
           encodeURI(data.subject) +
           '&body=' +
           encodeURI(data.body) +
           '&to=' +
-          encodeURI(data.to)
+          encodeURI(data.to.join(';'))
       );
       break;
     default:
@@ -38,7 +51,11 @@ function mailPop(opt = {}) {
           '&body=' +
           encodeURI(data.body) +
           '&to=' +
-          encodeURI(data.to)
+          encodeURI(data.to) +
+          '&cc=' +
+          encodeURI(data.cc) +
+          '&bcc=' +
+          encodeURI(data.bcc)
       );
   }
 }
