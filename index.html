@@ -34,17 +34,17 @@
       function temp2() {
         mailPop({
           subject: 'テストメール',
-          body: `
-          ご担当者さま
-          
-          いつもお世話になっております。{{担当者名}}です。
-          
-          {{値1}}の件で{{値2}}を送付致します。
-
-          {{値3}}
-          
-          よろしくお願いいたします。
-          `,
+          body: [
+            'ご担当者さま',
+            '',
+            'いつもお世話になっております。{{担当者名}}です。',
+            '',
+            '{{値1}}の件で{{値2}}を送付致します。',
+            '',
+            '{{値3}}',
+            '',
+            'よろしくお願いいたします。',
+          ],
           to: ['test@gmail.com'],
           replace: {
             担当者名: '田中',
@@ -84,13 +84,11 @@
           <div class="flex flex-row">
             <div class="w-24">値1</div>
             <div class="w-full border rounded-lg">
-              <input
-                class="w-full px-4"
-                id="val1"
-                placeholder="値1"
-                type="text"
-                value="現場調査"
-              />
+              <select class="w-full px-4" id="val1">
+                <option value=""></option>
+                <option value="現場調査">現場調査</option>
+                <option value="お見積り">お見積り</option>
+              </select>
             </div>
           </div>
           <div class="flex flex-row">

@@ -7,6 +7,9 @@ function mailPop(opt = {}) {
     mode: 'gmail',
   };
   let data = { ...def_data, ...opt };
+  if (Array.isArray(data.body)) {
+    data.body = data.body.join('\n');
+  }
   if (data.replace) {
     Object.keys(data.replace).forEach((key) => {
       data.subject = data.subject.replace('{{' + key + '}}', data.replace[key]);
