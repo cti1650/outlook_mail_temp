@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mail Temp</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- <script
+        type="text/javascript"
+        src="https://cti1650.github.io/outlook_mail_temp/js/mailPop.js"
+      ></script> -->
+    <script type="text/javascript" src="../js/mailPop.js"></script>
+    <script type="text/javascript">
+      function temp0() {
+        mailPop({ mode: mode.value });
+      }
+      function temp1() {
+        mailPop({
+          subject: 'テストメール',
+          body: [
+            'ご担当者さま',
+            '',
+            'いつもお世話になっております。{{担当者名}}です。',
+            '',
+            'このメールはテストメールです。',
+            '',
+            'よろしくお願いいたします。',
+          ],
+          to: ['test@gmail.com'],
+          replace: {
+            担当者名: '○●',
+          },
+          mode: mode.value,
+        });
+      }
+      function temp2() {
+        mailPop({
+          subject: 'テストメール',
+          body: [
+            'ご担当者さま',
+            '',
+            'いつもお世話になっております。{{担当者名}}です。',
+            '',
+            '{{値1}}の件で{{値2}}を送付致します。',
+            val3.value ? '\n{{値3}}\n' : '',
+            'よろしくお願いいたします。',
+          ],
+          to: ['test@gmail.com', 'test2@gmail.com'],
+          cc: ['test_cc@gmail.com'],
+          bcc: ['test_bcc@gmail.com'],
+          replace: {
+            担当者名: '○●',
+            値1: val1.value,
+            値2: val2.value,
+            値3: val3.value,
+          },
+          mode: mode.value,
+        });
+      }
+    </script>
+    <style>
+      * {
+        -webkit-appearance: none;
+      }
+    </style>
+  </head>
+  <body class="container max-w-xl bg-gray-200 p-4">
+    <main>
+      <div id="app"></div>
+    </main>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="text/babel" src="app.jsx"></script>
+    <script type="text/babel">
+      ReactDOM.render(<App />, document.getElementById('app'));
+    </script>
+  </body>
+</html>
