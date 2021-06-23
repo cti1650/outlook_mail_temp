@@ -35,3 +35,10 @@
 ```
 <button onclick="temp()">テンプレート表示</button>
 ```
+
+
+## 今後参考にしたいメール効率化策
+
+- [スピードアップのための単語登録活用術](https://buz-mail.com/template/#i-6)
+- [仕事が速い人のユーザー辞書活用法！登録内容や使い方を公開](https://marketer.jp/user-dictionary.html)
+- [Outlookのテンプレート／定型文／単語登録で業務効率アップ](https://www.bcnretail.com/market/detail/20210328_218877.html)
