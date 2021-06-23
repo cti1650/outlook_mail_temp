@@ -47,7 +47,8 @@
 
 - [Javascriptでテキストファイルを出力する方法](https://okenigou.com/2020/06/18/1005)
 
-## 不具合対応で参照したサイト
+## 作成で参照したサイト
 
+- [APIを使わずにVBAでGmailを作成](https://qiita.com/yoshi_782/items/a5d0a3f7ef30f5a36962)
 - [mailtoリンクでURLパラメーターが切れるときの対策](https://colo-ri.jp/develop/2017/10/mailto-broken-parameters.html)
 - [encodeURIComponent()](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent)
