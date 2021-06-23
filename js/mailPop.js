@@ -21,8 +21,8 @@ function mailPop(opt = {}) {
   if (Array.isArray(data.bcc)) {
     data.bcc = data.bcc.join(';');
   }
-  if(!~data.body.indexOf('&amp;')){
-    data.body.replace('&amp;','%26');
+  if(!~data.body.indexOf('&')){
+    data.body.replace('&','%26');
   }
   if (data.replace) {
     Object.keys(data.replace).forEach((key) => {
