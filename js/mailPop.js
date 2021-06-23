@@ -39,7 +39,7 @@ function mailPop(opt = {}) {
         'https://outlook.office.com/mail/deeplink/compose?subject=' +
           encodeURI(data.subject) +
           '&body=' +
-          encodeURI(data.body) +
+          encodeURIComponent(data.body) +
           '&to=' +
           encodeURI(data.to.join(';'))
       );
@@ -51,7 +51,7 @@ function mailPop(opt = {}) {
         'https://mail.google.com/mail/?view=cm&su=' +
           encodeURI(data.subject) +
           '&body=' +
-          encodeURI(data.body) +
+          encodeURIComponent(data.body) +
           '&to=' +
           encodeURI(data.to) +
           '&cc=' +
@@ -70,7 +70,7 @@ function mailPop(opt = {}) {
           data.body
             .split('\n')
             .map((value) => {
-              return encodeURI(value);
+              return encodeURIComponent(value);
             })
             .join('%0D%0A') +
           '&cc=' +
