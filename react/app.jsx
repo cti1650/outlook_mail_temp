@@ -1,9 +1,9 @@
-const baseItem = (props) => {
-  let { title } = props;
+const BaseItem = (props) => {
+  let { title,data } = props;
   return (
     <div>
       <div class="p-2 bg-white rounded-lg">
-        <div class="text-lg">{name}</div>
+        <div class="text-lg">{title}</div>
         <div>
           <button
             class="
@@ -15,7 +15,9 @@ const baseItem = (props) => {
               py-1
               rounded-lg
             "
-            onclick="temp0();"
+            onClick={e=>{
+              mailPop(data);
+            }}
           >
             メール
           </button>
@@ -43,7 +45,7 @@ const SelectMode = (props) => {
       </div>
       <div class="flex flex-col space-y-2">
         {items && items.map(item=>{
-          return (<baseItem title={item.name} />)
+          return (<BaseItem title={item.name} data={item} />)
         })}
       </div>
     </div>
