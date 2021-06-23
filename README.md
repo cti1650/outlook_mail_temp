@@ -50,3 +50,4 @@
 ## 不具合対応で参照したサイト
 
 - [mailtoリンクでURLパラメーターが切れるときの対策](https://colo-ri.jp/develop/2017/10/mailto-broken-parameters.html)
+- [encodeURIComponent()](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent)
