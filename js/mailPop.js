@@ -21,9 +21,6 @@ function mailPop(opt = {}) {
   if (Array.isArray(data.bcc)) {
     data.bcc = data.bcc.join(';');
   }
-  if(~data.body.indexOf('&')){
-    data.body.replace('&','%26');
-  }
   if (data.replace) {
     Object.keys(data.replace).forEach((key) => {
       data.subject = data.subject.replace('{{' + key + '}}', data.replace[key]);
@@ -42,7 +39,7 @@ function mailPop(opt = {}) {
         'https://outlook.office.com/mail/deeplink/compose?subject=' +
           encodeURI(data.subject) +
           '&body=' +
-          encodeURI(data.body) +
+          encodeURIComponent(data.body) +
           '&to=' +
           encodeURI(data.to.join(';'))
       );
@@ -54,7 +51,7 @@ function mailPop(opt = {}) {
         'https://mail.google.com/mail/?view=cm&su=' +
           encodeURI(data.subject) +
           '&body=' +
-          encodeURI(data.body) +
+          encodeURIComponent(data.body) +
           '&to=' +
           encodeURI(data.to) +
           '&cc=' +
@@ -73,7 +70,7 @@ function mailPop(opt = {}) {
           data.body
             .split('\n')
             .map((value) => {
-              return encodeURI(value);
+              return encodeURIComponent(value);
             })
             .join('%0D%0A') +
           '&cc=' +
