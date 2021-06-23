@@ -46,3 +46,7 @@
 ## 今後取り入れたい機能や技術
 
 - [Javascriptでテキストファイルを出力する方法](https://okenigou.com/2020/06/18/1005)
+
+## 不具合対応で参照したサイト
+
+- [mailtoリンクでURLパラメーターが切れるときの対策](https://colo-ri.jp/develop/2017/10/mailto-broken-parameters.html)
