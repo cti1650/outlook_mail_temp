@@ -42,3 +42,7 @@
 - [スピードアップのための単語登録活用術](https://buz-mail.com/template/#i-6)
 - [仕事が速い人のユーザー辞書活用法！登録内容や使い方を公開](https://marketer.jp/user-dictionary.html)
 - [Outlookのテンプレート／定型文／単語登録で業務効率アップ](https://www.bcnretail.com/market/detail/20210328_218877.html)
+
+## 今後取り入れたい機能や技術
+
+- [Javascriptでテキストファイルを出力する方法](https://okenigou.com/2020/06/18/1005)
