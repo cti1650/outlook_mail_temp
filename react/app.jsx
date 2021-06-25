@@ -60,6 +60,7 @@ const BaseItem2 = (props) => {
               rounded-lg
             "
             onClick={e=>{
+              console.log(postStr);
               mailPop(postStr);
             }}
           >
