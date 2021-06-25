@@ -42,7 +42,7 @@ const BaseItem2 = (props) => {
               placeholder="値2"
               type="text"
               value={postStr.replace['担当者名']}
-              onChange={e=>{
+              onKeyup={e=>{
                         let data = postStr;
                         data.replace = {...data.replace,...{'担当者名':e.target.value}};
                         setPostStr(data)
