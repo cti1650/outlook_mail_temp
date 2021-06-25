@@ -44,7 +44,7 @@ const BaseItem2 = (props) => {
               value={postStr.replace['テストメール']}
               onChange={e=>{
                         let data = postStr;
-                        data.replace = {...data.replace,{'テストメール':e.target.value}};
+                        data.replace = {...data.replace,...{'テストメール':e.target.value}};
                         setPostStr(data)
                        }}
             />
