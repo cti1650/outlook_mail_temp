@@ -28,7 +28,7 @@ const BaseItem = (props) => {
 };
 const BaseItem2 = (props) => {
   let { title,data } = props;
-  const [postStr,setPostStr] = React.useState('');
+  const [postStr,setPostStr] = React.useState(data);
   return (
     <div>
       <div class="p-2 bg-white rounded-lg">
@@ -41,9 +41,11 @@ const BaseItem2 = (props) => {
               id="val2"
               placeholder="値2"
               type="text"
-              value={postStr}
+              value={postStr.replace['テストメール']}
               onChange={e=>{
-                        setPostStr(e.target.value)
+                        let data = postStr;
+                        data.replace = {...data.replace,{'テストメール':e.target.value}};
+                        setPostStr(data)
                        }}
             />
           </div>
