@@ -40,6 +40,25 @@
           },
           mode: '',
         },
+        {
+          name: 'テスト2',
+          subject: 'テストメール2',
+          body: [
+            'ご担当者さま',
+            '',
+            'いつもお世話になっております。{{test1}}です。',
+            '',
+            'このメールは{{test2}}です。',
+            '',
+            'よろしくお願いいたします。',
+          ],
+          to: ['test@gmail.com'],
+          input: ['test1', 'test2'],
+          replace: {
+            担当者名: '○●',
+          },
+          mode: '',
+        },
       ];
       function temp0() {
         mailPop({ mode: mode.value });
