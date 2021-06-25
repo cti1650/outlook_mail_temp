@@ -26,9 +26,23 @@ const BaseItem = (props) => {
     </div>
   )
 };
+const initialState = {count: 0};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return {count: state.count + 1};
+    case 'decrement':
+      return {count: state.count - 1};
+    default:
+      throw new Error();
+  }
+}
 const BaseItem2 = (props) => {
   let { title,data } = props;
   const [postStr,setPostStr] = React.useState(data);
+  const [state, dispatch] = React.useReducer(reducer, data.replace);
+  console.log(state);
   return (
     <div>
       <div class="p-2 bg-white rounded-lg">
@@ -42,12 +56,7 @@ const BaseItem2 = (props) => {
               placeholder="値2"
               type="text"
               value={postStr.replace['担当者名']}
-              onKeyup={e=>{
-                        setPostStr(prevState => {
-                          // Object.assign would also work
-                          return {...prevState, ...{replace:{'担当者名':e.target.value}}};
-                        });
-                       }}
+              onKeyup={e=>() => dispatch({})}
             />
           </div>
         </div>
