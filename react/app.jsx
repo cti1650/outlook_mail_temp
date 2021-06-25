@@ -43,9 +43,9 @@ const BaseItem2 = (props) => {
               type="text"
               value={postStr.replace['担当者名']}
               onKeyup={e=>{
-                        let data = postStr;
-                        data.replace = {...data.replace,...{'担当者名':e.target.value}};
-                        setPostStr(data)
+                        let prevPostStr = postStr;
+                        prevPostStr.replace = {...prevPostStr.replace,...{'担当者名':e.target.value}};
+                        setPostStr(prevPostStr)
                        }}
             />
           </div>
