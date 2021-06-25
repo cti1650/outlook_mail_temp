@@ -45,7 +45,7 @@ const BaseItem2 = (props) => {
               onKeyup={e=>{
                         let prevPostStr = postStr;
                         prevPostStr.replace = {...prevPostStr.replace,...{'担当者名':e.target.value}};
-                        setPostStr(prevPostStr)
+                        setPostStr(prevPostStr);
                        }}
             />
           </div>
