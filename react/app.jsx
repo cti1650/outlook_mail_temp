@@ -26,6 +26,52 @@ const BaseItem = (props) => {
     </div>
   )
 };
+const BaseItem2 = (props) => {
+  let { title,data } = props;
+  const [postStr,setPostStr] = React.useState('');
+  return (
+    <div>
+      <div class="p-2 bg-white rounded-lg">
+        <div class="text-lg">{title}</div>
+        <div class="flex flex-row">
+          <div class="w-40">値2</div>
+          <div class="w-full border rounded-lg">
+            <input
+              class="w-full px-4"
+              id="val2"
+              placeholder="値2"
+              type="text"
+              value={postStr}
+              onChange={e=>{
+                        setPostStr(e.target.value)
+                       }}
+            />
+          </div>
+        </div>
+        <div>
+          <button
+            class="
+              w-full
+              border border-gray-200
+              bg-gray-400
+              w-40
+              px-4
+              py-1
+              rounded-lg
+            "
+            onClick={e=>{
+              mailPop(data);
+            }}
+          >
+            メール
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+};
+
+
 const SelectMode = (props) => {
   let { items } = props;
   console.log(items);
@@ -45,7 +91,7 @@ const SelectMode = (props) => {
       </div>
       <div class="flex flex-col space-y-2">
         {items && items.map(item=>{
-          return (<BaseItem title={item.name} data={item} />)
+          return (<BaseItem2 title={item.name} data={item} />)
         })}
       </div>
     </div>
