@@ -27,9 +27,23 @@ const BaseItem = (props) => {
     </div>
   )
 };
-const BaseInputItem = (props) => {
+const initialState = {count: 0};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return {count: state.count + 1};
+    case 'decrement':
+      return {count: state.count - 1};
+    default:
+      throw new Error();
+  }
+}
+const BaseItem2 = (props) => {
   let { title,data } = props;
-  const {postData,setPostData} = useState(data);
+  const [postStr,setPostStr] = React.useState(data);
+  const [state, dispatch] = React.useReducer(reducer, data.replace);
+  console.log(state);
   return (
     <div>
       <div class="p-2 bg-white rounded-lg">
@@ -96,6 +110,20 @@ const BaseInputItem = (props) => {
               }
             })}
           </div>
+        <div class="flex flex-row">
+          <div class="w-40">値2</div>
+          <div class="w-full border rounded-lg">
+            <input
+              class="w-full px-4"
+              id="val2"
+              placeholder="値2"
+              type="text"
+              value={postStr.replace['担当者名']}
+              onKeyup={e=>() => dispatch({})}
+            />
+          </div>
+        </div>
+        <div>
           <button
             class="
               w-full
@@ -108,6 +136,8 @@ const BaseInputItem = (props) => {
             "
             onClick={e=>{
               mailPop(data);
+              console.log(postStr);
+              mailPop(postStr);
             }}
           >
             メール
@@ -115,8 +145,11 @@ const BaseInputItem = (props) => {
         </div>
       </div>
     </div>
+  </div>
   )
 };
+
+
 const SelectMode = (props) => {
   let { items } = props;
   console.log(items);
@@ -136,7 +169,7 @@ const SelectMode = (props) => {
       </div>
       <div class="flex flex-col space-y-2">
         {items && items.map(item=>{
-          return (<BaseInputItem title={item.name} data={item} />)
+          return (<BaseItem2 title={item.name} data={item} />)
         })}
       </div>
     </div>
