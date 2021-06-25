@@ -38,7 +38,7 @@
           replace: {
             担当者名: '○●',
           },
-          mode: '',
+          mode: 'gmail',
         },
         {
           name: 'テスト2',
@@ -57,7 +57,30 @@
           replace: {
             担当者名: '○●',
           },
-          mode: '',
+          mode: 'gmail',
+        },
+        {
+          name: 'テスト3',
+          subject: 'テストメール3',
+          body: [
+            'ご担当者さま',
+            '',
+            'いつもお世話になっております。{{テスト1}}です。',
+            '',
+            'このメールは{{テスト2}}です。',
+            '',
+            'よろしくお願いいたします。',
+          ],
+          to: ['test@gmail.com'],
+          input: [
+            { key: 'テスト1', mode: 'textarea' },
+            'テスト2',
+            { key: 'テスト3', mode: 'select', list: ['', 'test', 'ok'] },
+          ],
+          replace: {
+            担当者名: '○●',
+          },
+          mode: 'gmail',
         },
       ];
       function temp0() {

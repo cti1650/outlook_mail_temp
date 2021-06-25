@@ -1,57 +1,33 @@
-
 const BaseItem = (props) => {
   let { title,data } = props;
-  return (
-    <div>
-      <div class="p-2 bg-white rounded-lg">
-        <div class="text-lg">{title}</div>
-        <div>
-          <button
-            class="
-              w-full
-              border border-gray-200
-              bg-gray-400
-              w-40
-              px-4
-              py-1
-              rounded-lg
-            "
-            onClick={e=>{
-              mailPop(data);
-            }}
-          >
-            メール
-          </button>
-        </div>
-      </div>
-    </div>
-  )
-};
-const initialState = {count: 0};
-
-function reducer(state, action) {
-  switch (action.type) {
-    case 'increment':
-      return {count: state.count + 1};
-    case 'decrement':
-      return {count: state.count - 1};
-    default:
-      throw new Error();
-  }
-}
-const BaseItem2 = (props) => {
-  let { title,data } = props;
-  const [postStr,setPostStr] = React.useState(data);
-  const [state, dispatch] = React.useReducer(reducer, data.replace);
-  console.log(state);
+  const [postStr,setPostStr] = React.useState(()=>{
+    return {...{
+      name: '',
+    subject: '',
+    body: '',
+    to: '',
+    replace: {},
+    input:[],
+    mode: '',},...data}
+  });
+  const handleKeyup = React.useCallback((key,value)=>{
+    setPostStr((prev)=>{
+      const newData = prev;
+      newData.replace[key] = value;
+      return newData;
+    })
+  },[postStr]);
+  const handleClick = React.useCallback((e)=>{
+    mailPop(postStr);
+  },[postStr]);
   return (
     <div>
       <div class="p-2 bg-white rounded-lg">
         <div class="text-lg">{title}</div>
         <div>
           <div class="flex flex-col py-2 space-y-2 w-full">
-            {data.input && postData.input.map((item,index)=>{
-              if(Array.isArray(item)){
+            {postStr.input && postStr.input.map((item,index)=>{
+              if(item.key){
                 switch(item.mode.toLowerCase()){
                   case 'text':
                   case 'textbox':
@@ -60,10 +36,10 @@ const BaseItem2 = (props) => {
                       <div class="w-full border rounded-lg">
                         <input
                           class="w-full px-4"
-                          id="val2"
                           placeholder={item.key}
                           type="text"
-                          value={postData.replace[item.key]}
+                          onKeyUp={(e)=>handleKeyup(item.key,e.target.value)}
+                          value={postStr.replace[item.key]}
                         />
                       </div>
                     </div>)
@@ -72,10 +48,12 @@ const BaseItem2 = (props) => {
                     return (<div class="flex flex-row">
                       <div class="w-40">{item.key}</div>
                       <div class="w-full border rounded-lg">
-                        <select class="w-full px-4" id="val1" value={postData.replace[item.key]}>
-                          <option value=""></option>
-                          <option value="現場調査" selected>現場調査</option>
-                          <option value="お見積り">お見積り</option>
+                        <select class="w-full px-4" onChange={(e)=>handleKeyup(item.key,e.target.value)} placeholder={item.key} value={postStr.replace[item.key]}>
+                          {
+                            item.list && item.list.map((value)=>{
+                              return (<option value={value}>{value}</option>)
+                            })
+                          }
                         </select>
                       </div>
                     </div>)
@@ -86,9 +64,9 @@ const BaseItem2 = (props) => {
                       <div class="w-full border rounded-lg">
                         <textarea
                           class="w-full px-4"
-                          id="val3"
                           placeholder={item.key}
-                          value={postData.replace[item.key]}
+                          onKeyUp={(e)=>handleKeyup(item.key,e.target.value)}
+                          value={postStr.replace[item.key]}
                         ></textarea>
                       </div>
                     </div>)
@@ -100,28 +78,15 @@ const BaseItem2 = (props) => {
                   <div class="w-full border rounded-lg">
                     <input
                         class="w-full px-4"
-                        id="val2"
                         placeholder={item}
                         type="text"
-                        value={postData.replace[item]}
+                        onKeyUp={(e)=>handleKeyup(item,e.target.value)}
+                        value={postStr.replace[item]}
                       />
                   </div>
                 </div>)
               }
             })}
-          </div>
-        <div class="flex flex-row">
-          <div class="w-40">値2</div>
-          <div class="w-full border rounded-lg">
-            <input
-              class="w-full px-4"
-              id="val2"
-              placeholder="値2"
-              type="text"
-              value={postStr.replace['担当者名']}
-              onKeyup={e=>() => dispatch({})}
-            />
-          </div>
         </div>
         <div>
           <button
@@ -134,11 +99,7 @@ const BaseItem2 = (props) => {
               py-1
               rounded-lg
             "
-            onClick={e=>{
-              mailPop(data);
-              console.log(postStr);
-              mailPop(postStr);
-            }}
+            onClick={handleClick}
           >
             メール
           </button>
@@ -148,7 +109,6 @@ const BaseItem2 = (props) => {
   </div>
   )
 };
-
 
 const SelectMode = (props) => {
   let { items } = props;
@@ -169,7 +129,7 @@ const SelectMode = (props) => {
       </div>
       <div class="flex flex-col space-y-2">
         {items && items.map(item=>{
-          return (<BaseItem2 title={item.name} data={item} />)
+          return (<BaseItem title={item.name} data={item} />)
         })}
       </div>
     </div>
