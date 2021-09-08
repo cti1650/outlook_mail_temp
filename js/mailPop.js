@@ -37,7 +37,7 @@ function mailPop(opt = {}) {
       ];
       window.open(
         'https://outlook.office.com/mail/deeplink/compose?subject=' +
-          encodeURI(data.subject) +
+          encodeURIComponent(data.subject.trim()) +
           '&body=' +
           encodeURIComponent(data.body) +
           '&to=' +
@@ -49,7 +49,7 @@ function mailPop(opt = {}) {
     case 'google':
       window.open(
         'https://mail.google.com/mail/?view=cm&su=' +
-          encodeURI(data.subject) +
+          encodeURIComponent(data.subject.trim()) +
           '&body=' +
           encodeURIComponent(data.body) +
           '&to=' +
@@ -65,7 +65,7 @@ function mailPop(opt = {}) {
         'mailto:' +
           encodeURI(data.to.replace(';', ',')) +
           '?subject=' +
-          encodeURI(data.subject) +
+          encodeURIComponent(data.subject.trim()) +
           '&body=' +
           data.body
             .split('\n')
