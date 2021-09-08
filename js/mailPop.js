@@ -9,6 +9,7 @@ function mailPop(opt = {}) {
     mode: '',
   };
   let data = { ...def_data, ...opt };
+  let url = '';
   if (Array.isArray(data.body)) {
     data.body = data.body.join('\n');
   }
@@ -35,7 +36,7 @@ function mailPop(opt = {}) {
         ...data.cc.split(';'),
         ...data.bcc.split(';'),
       ];
-      let url = 'https://outlook.office.com/mail/deeplink/compose?subject=' +
+      url = 'https://outlook.office.com/mail/deeplink/compose?subject=' +
           encodeURIComponent(data.subject.trim()) +
           '&body=' +
           encodeURIComponent(data.body) +
@@ -47,7 +48,7 @@ function mailPop(opt = {}) {
     case 'gm':
     case 'gmail':
     case 'google':
-      let url = 'https://mail.google.com/mail/?view=cm&su=' +
+      url = 'https://mail.google.com/mail/?view=cm&su=' +
           encodeURIComponent(data.subject.trim()) +
           '&body=' +
           encodeURIComponent(data.body) +
@@ -61,7 +62,7 @@ function mailPop(opt = {}) {
       window.open(url);
       break;
     default:
-      let url = 'mailto:' +
+      url = 'mailto:' +
           encodeURI(data.to.replace(';', ',')) +
           '?subject=' +
           encodeURIComponent(data.subject.trim()) +
