@@ -40,7 +40,7 @@ function mailPop(opt = {}) {
           '&body=' +
           encodeURIComponent(data.body) +
           '&to=' +
-          encodeURI(data.to.join(';');
+          encodeURI(data.to.join(';'));
       console.log(url);
       window.open(url);
       break;
